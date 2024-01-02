@@ -1,7 +1,6 @@
 #include <string.h>
 #include "TetrisFunctions.h"
 #include "TetrisDefine.h"
-#include "raylib.h"
 
 extern int stage[];
 extern int score;
