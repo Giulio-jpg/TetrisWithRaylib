@@ -1,0 +1,11 @@
+{
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "tetris.h": "c",
+        "tetrisfunctions.h": "c",
+        "raylib.h": "c",
+        "stdio.h": "c",
+        "tetrisinfo.h": "c",
+        "tetrisdefine.h": "c"
+    }
+}
