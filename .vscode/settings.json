@@ -6,6 +6,7 @@
         "raylib.h": "c",
         "stdio.h": "c",
         "tetrisinfo.h": "c",
-        "tetrisdefine.h": "c"
+        "tetrisdefine.h": "c",
+        "tetrisdata.h": "c"
     }
 }
