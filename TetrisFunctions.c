@@ -8,7 +8,6 @@ extern float tetrominoDescentTime;
 extern Sound SFXDeleteLines;
 extern Color colorsTypes[9];
 
-
 int CheckCollision(const int tetrominoCellX, const int tetrominoCellY, const int *tetromino)
 {
     for (int y = 0; y < TETROMINO_SIZE; y++)

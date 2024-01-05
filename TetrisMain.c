@@ -3,32 +3,6 @@
 #include "TetrisData.h"
 #include "TetrisDefine.h"
 
-int stage[] = 
-{
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-};
-
 Sound SFXDeleteLines;
 int score;
 float tetrominoDescentTime;
@@ -131,7 +105,6 @@ int main(int argc, char** argv, char** environ)
                     for (int x = 0; x < TETROMINO_SIZE; x++)
                     {
                         const int offset = y * TETROMINO_SIZE + x;
-
                         const int* tetromino = tetrominoTypes[currentTetrominoType][tetrominoRotation];
 
                         if (tetromino[offset] == 1)
@@ -148,9 +121,9 @@ int main(int argc, char** argv, char** environ)
                 tetrominoCellX = tetrominoStartCellX;
                 tetrominoCellY = tetrominoStartCellY;
 
-                currentTetrominoType = GetRandomValue(0, 6);
+                currentTetrominoType = GetRandomValue(0,  TETROMINO_TYPES);
                 tetrominoRotation = 0;
-                tetrominoColor = GetRandomValue(1, 8);
+                tetrominoColor = GetRandomValue(1, COLORS);
             }      
             
         }
@@ -163,7 +136,7 @@ int main(int argc, char** argv, char** environ)
         DrawArena(startOffsetX, startOffsetY);
         DrawTetromino(startOffsetX, startOffsetY, tetrominoCellX, tetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation], colorsTypes[tetrominoColor]);
 
-        DrawText(TextFormat("Score: %05i", score), SCORE_TEXT_X, SCORE_TEXT_Y, FONT_SIZE, WHITE);
+        DrawText(TextFormat("Score: %04i", score), SCORE_TEXT_X, SCORE_TEXT_Y, FONT_SIZE, WHITE);
 
         EndDrawing();
     }
