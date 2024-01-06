@@ -19,8 +19,8 @@ int main(int argc, char** argv, char** environ)
     const int tetrominoStartCellX = STAGE_WIDTH / 2;
     const int tetrominoStartCellY = 0;
 
-    int tetrominoCellX = tetrominoStartCellX;
-    int tetrominoCellY = tetrominoStartCellY;
+    int currentTetrominoCellX = tetrominoStartCellX;
+    int currentTetrominoCellY = tetrominoStartCellY;
 
     time_t unixTime;
     time(&unixTime);
@@ -58,7 +58,6 @@ int main(int argc, char** argv, char** environ)
         if (IsKeyPressed(KEY_SPACE))
         {
             const int lastRotation = tetrominoRotation;
-
             tetrominoRotation++;
 
             if (tetrominoRotation > 3)
@@ -66,7 +65,7 @@ int main(int argc, char** argv, char** environ)
                 tetrominoRotation = 0;
             }
 
-            if (CheckCollision(tetrominoCellX, tetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
+            if (CheckCollision(currentTetrominoCellX, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
             {
                 tetrominoRotation = lastRotation;
             }
@@ -76,26 +75,26 @@ int main(int argc, char** argv, char** environ)
         if (IsKeyPressed(KEY_RIGHT))
         {
             // no need to check for overflow, it is blocked by the wall
-            if(!CheckCollision(tetrominoCellX + 1, tetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
+            if(!CheckCollision(currentTetrominoCellX + 1, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
             {
-                tetrominoCellX++;
+                currentTetrominoCellX++;
             }
             
         }
         
         if (IsKeyPressed(KEY_LEFT))
         {
-            if(!CheckCollision(tetrominoCellX - 1, tetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
+            if(!CheckCollision(currentTetrominoCellX - 1, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
             {
-                tetrominoCellX--;
+                currentTetrominoCellX--;
             }
         }
 
         if (descentTimer <= 0 || IsKeyPressed(KEY_DOWN))
         {
-            if (!CheckCollision(tetrominoCellX, tetrominoCellY + 1, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
+            if (!CheckCollision(currentTetrominoCellX, currentTetrominoCellY + 1, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
             {
-                tetrominoCellY++;
+                currentTetrominoCellY++;
                 descentTimer = tetrominoDescentTime;
             }
             else
@@ -109,7 +108,7 @@ int main(int argc, char** argv, char** environ)
 
                         if (tetromino[offset] == 1)
                         {
-                            const int offset_stage = (y + tetrominoCellY) * STAGE_WIDTH + (x + tetrominoCellX);   
+                            const int offset_stage = (y + currentTetrominoCellY) * STAGE_WIDTH + (x + currentTetrominoCellX);   
 
                             stage[offset_stage] = tetrominoColor + 1;
                         }
@@ -118,8 +117,8 @@ int main(int argc, char** argv, char** environ)
 
                 DeleteLines();
 
-                tetrominoCellX = tetrominoStartCellX;
-                tetrominoCellY = tetrominoStartCellY;
+                currentTetrominoCellX = tetrominoStartCellX;
+                currentTetrominoCellY = tetrominoStartCellY;
 
                 currentTetrominoType = GetRandomValue(0,  TETROMINO_TYPES);
                 tetrominoRotation = 0;
@@ -134,7 +133,7 @@ int main(int argc, char** argv, char** environ)
         ClearBackground(RED);
         
         DrawArena(startOffsetX, startOffsetY);
-        DrawTetromino(startOffsetX, startOffsetY, tetrominoCellX, tetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation], colorsTypes[tetrominoColor]);
+        DrawTetromino(startOffsetX, startOffsetY, currentTetrominoCellX, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation], colorsTypes[tetrominoColor]);
 
         DrawText(TextFormat("Score: %04i", score), SCORE_TEXT_X, SCORE_TEXT_Y, FONT_SIZE, WHITE);
 

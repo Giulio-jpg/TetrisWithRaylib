@@ -63,7 +63,6 @@ int CheckCollision(const int tetrominoCellX, const int tetrominoCellY, const int
     return 0;
 }
 
-
 void UpdateScore()
 {
     score += LINE_POINTS;
@@ -78,7 +77,7 @@ void ResetLines(int startLineY)
 {
     for (int y = startLineY; y >= 0; y--)
     {
-        for (int x = 0; x < STAGE_WIDTH - 1; x++)
+        for (int x = 1; x < STAGE_WIDTH - 1; x++)
         {
             const int offset = y * STAGE_WIDTH + x;
             const int offsetBelow = (y + 1) * STAGE_WIDTH + x;
@@ -99,7 +98,7 @@ void DeleteLines()
     for (int y = 0; y < STAGE_HEIGHT - 1; y++)
     {
         int checkLine = 1;
-        for (int x = 0; x < STAGE_WIDTH; x++)
+        for (int x = 1; x < STAGE_WIDTH - 1; x++)
         {
             const int offset = y * STAGE_WIDTH + x;
 
