@@ -1,3 +1,6 @@
+#ifndef TETRIS_DEFINE
+#define TETRIS_DEFINE
+
 #define STAGE_WIDTH 12
 #define STAGE_HEIGHT 22
 #define TILE_SIZE 22
@@ -15,5 +18,5 @@
 #define FONT_SIZE 20
 
 
-
+#endif
 
