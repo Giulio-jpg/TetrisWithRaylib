@@ -1,4 +1,7 @@
+#ifndef TETRIS_DATA
+#define TETRIS_DATA
 #include "raylib.h"
+
 
 int stage[] = 
 {
@@ -234,3 +237,8 @@ const int *tetrominoTypes[7][4] =
     {lTetromino0, lTetromino90, lTetromino180, lTetromino270},
     {oTetromino, oTetromino, oTetromino, oTetromino},
 };
+
+
+
+
+#endif //TETRIS_DATA

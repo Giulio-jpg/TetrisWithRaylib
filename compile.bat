@@ -1,0 +1,1 @@
+clang.exe -o bin\tetris.exe Main\TetrisMain.c src\*.c -IInclude -l raylibdll 

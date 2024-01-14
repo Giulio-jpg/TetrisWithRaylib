@@ -1,5 +1,7 @@
 #include <time.h>
-#include "TetrisFunctions.h"
+#include "TetrisCollision.h"
+#include "TetrisDeleteLines.h"
+#include "TetrisDraw.h"
 #include "TetrisData.h"
 #include "TetrisDefine.h"
 

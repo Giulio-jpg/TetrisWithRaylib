@@ -7,6 +7,7 @@
         "stdio.h": "c",
         "tetrisinfo.h": "c",
         "tetrisdefine.h": "c",
-        "tetrisdata.h": "c"
+        "tetrisdata.h": "c",
+        "tetrisdeletelines.h": "c"
     }
 }
