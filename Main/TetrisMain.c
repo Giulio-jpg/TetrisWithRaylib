@@ -71,7 +71,6 @@ int main(int argc, char** argv, char** environ)
             {
                 tetrominoRotation = lastRotation;
             }
-            
         }
 
         if (IsKeyPressed(KEY_RIGHT))
@@ -81,7 +80,6 @@ int main(int argc, char** argv, char** environ)
             {
                 currentTetrominoCellX++;
             }
-            
         }
         
         if (IsKeyPressed(KEY_LEFT))
@@ -126,11 +124,8 @@ int main(int argc, char** argv, char** environ)
                 tetrominoRotation = 0;
                 tetrominoColor = GetRandomValue(1, COLORS);
             }      
-            
         }
 
-
-        // DRAW
         BeginDrawing();
         ClearBackground(RED);
         
@@ -143,11 +138,8 @@ int main(int argc, char** argv, char** environ)
     }
     
     UnloadMusicStream(music);          
-
     CloseAudioDevice();     
-
     CloseWindow();
-
     return 0;
 }
 
