@@ -5,7 +5,7 @@
 
 void DeleteLines();
 void UpdateScore();
-void ResetLines(int startLineY);
+void ResetLines(const int startLineY);
 
 
 #endif

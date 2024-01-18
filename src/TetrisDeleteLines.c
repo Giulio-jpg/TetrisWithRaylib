@@ -16,7 +16,7 @@ void UpdateScore()
     }
 }
 
-void ResetLines(int startLineY)
+void ResetLines(const int startLineY)
 {
     for (int y = startLineY; y >= 0; y--)
     {

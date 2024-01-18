@@ -17,7 +17,6 @@ int main(int argc, char** argv, char** environ)
     const int startOffsetX = windowWidth / 2 - STAGE_WIDTH * TILE_SIZE / 2;
     const int startOffsetY = windowHeight / 2 - STAGE_HEIGHT * TILE_SIZE / 2;
 
-    
     const int tetrominoStartCellX = STAGE_WIDTH / 2;
     const int tetrominoStartCellY = 0;
 
