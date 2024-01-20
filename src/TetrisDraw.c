@@ -1,5 +1,4 @@
 #include "TetrisDraw.h"
-#include "TetrisDefine.h"
 
 extern int stage[];
 extern Color colorsTypes[];

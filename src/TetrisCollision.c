@@ -1,5 +1,4 @@
 #include "TetrisCollision.h"
-#include "TetrisDefine.h"
 
 extern int stage[];
 

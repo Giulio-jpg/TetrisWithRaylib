@@ -1,5 +1,4 @@
 #include "TetrisDeleteLines.h"
-#include "TetrisDefine.h"
 
 extern int stage[];
 extern int score;

@@ -3,7 +3,13 @@
 #include "TetrisDeleteLines.h"
 #include "TetrisDraw.h"
 #include "TetrisData.h"
-#include "TetrisDefine.h"
+
+#define COLORS 8
+#define TETROMINO_TYPES 6
+
+#define SCORE_TEXT_X 500
+#define SCORE_TEXT_Y 80
+#define FONT_SIZE 20
 
 Sound SFXDeleteLines;
 int score;
