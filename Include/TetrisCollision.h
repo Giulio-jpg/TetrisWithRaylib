@@ -8,7 +8,3 @@ int CheckCollision(const int tetrominoCellX, const int tetrominoCellY, const int
 
 
 #endif
-
-
-
-
