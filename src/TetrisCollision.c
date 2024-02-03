@@ -1,5 +1,4 @@
 #include "TetrisCollision.h"
-#include "TetrisData.h"
 
 int CheckCollision(const int tetrominoCellX, const int tetrominoCellY, const int *tetromino)
 {

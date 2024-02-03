@@ -1,16 +1,16 @@
-#include "TetrisDeleteLines.h"
-#include "TetrisData.h"
+#include "TetrisCheckLines.h"
 
-extern int score;
-extern float tetrominoDescentTime;
+#define LINE_POINTS 100
+#define DESCENT_SPEED_INCREASE_THRESHOLD 300
+#define MAX_DESCENT_TIME 0.2
 
-void UpdateScore()
+void UpdateScore(int* score, float* descentTime)
 {
-    score += LINE_POINTS;
+    *score += LINE_POINTS;
 
-    if ((score % DESCENT_SPEED_INCREASE_THRESHOLD) == 0 && tetrominoDescentTime > MAX_DESCENT_TIME)
+    if ((*score % DESCENT_SPEED_INCREASE_THRESHOLD) == 0 && *descentTime > MAX_DESCENT_TIME)
     {
-        tetrominoDescentTime -= 0.1;
+        *descentTime -= 0.1;
     }
 }
 
@@ -32,7 +32,7 @@ void ResetLines(const int startLineY)
     }
 }
 
-void DeleteLines(Sound SFXDeleteLines)
+void CheckDeleteLines(Sound SFXDeleteLines, int* score, float* descentTime)
 {
     for (int y = 0; y < STAGE_HEIGHT - 1; y++)
     {
@@ -56,7 +56,7 @@ void DeleteLines(Sound SFXDeleteLines)
 
             ResetLines(y);
             PlaySound(SFXDeleteLines);
-            UpdateScore();
+            UpdateScore(score, descentTime);
         }
     }
 }

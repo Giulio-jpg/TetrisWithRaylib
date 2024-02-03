@@ -1,18 +1,14 @@
 #include <time.h>
 #include "TetrisCollision.h"
-#include "TetrisDeleteLines.h"
+#include "TetrisCheckLines.h"
 #include "TetrisDraw.h"
 #include "TetrisData.h"
 
-#define COLORS 8
 #define TETROMINO_TYPES 6
-
-#define SCORE_TEXT_X 500
-#define SCORE_TEXT_Y 80
+#define COLORS 8
+#define SCORE_TEXT_X 550
+#define SCORE_TEXT_Y 50
 #define FONT_SIZE 20
-
-int score;
-float tetrominoDescentTime;
 
 int main(int argc, char** argv, char** environ)
 {
@@ -37,7 +33,9 @@ int main(int argc, char** argv, char** environ)
     int tetrominoColor = GetRandomValue(1, COLORS);      // first color is for the stage
 
     float descentTimer = 1.0f;
-    tetrominoDescentTime = descentTimer;
+    float tetrominoDescentTime = descentTimer;
+
+    int score = 0;
     
     InitWindow(windowWidth, windowHeight, "Tetris");
 
@@ -118,8 +116,8 @@ int main(int argc, char** argv, char** environ)
                         }
                     }
                 }
-
-                DeleteLines(SFXDeleteLines);
+                
+                CheckDeleteLines(SFXDeleteLines, &score, &tetrominoDescentTime);
 
                 currentTetrominoCellX = tetrominoStartCellX;
                 currentTetrominoCellY = tetrominoStartCellY;
@@ -146,43 +144,4 @@ int main(int argc, char** argv, char** environ)
     CloseWindow();
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
