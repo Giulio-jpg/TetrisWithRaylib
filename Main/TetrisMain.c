@@ -4,12 +4,6 @@
 #include "TetrisDraw.h"
 #include "TetrisData.h"
 
-#define TETROMINO_TYPES 6
-#define COLORS 8
-#define SCORE_TEXT_X 550
-#define SCORE_TEXT_Y 50
-#define FONT_SIZE 20
-
 int main(int argc, char** argv, char** environ)
 {
     const int windowWidth = 720;    
