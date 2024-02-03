@@ -1,9 +1,8 @@
 #include "TetrisDeleteLines.h"
+#include "TetrisData.h"
 
-extern int stage[];
 extern int score;
 extern float tetrominoDescentTime;
-extern Sound SFXDeleteLines;
 
 void UpdateScore()
 {
@@ -33,7 +32,7 @@ void ResetLines(const int startLineY)
     }
 }
 
-void DeleteLines()
+void DeleteLines(Sound SFXDeleteLines)
 {
     for (int y = 0; y < STAGE_HEIGHT - 1; y++)
     {

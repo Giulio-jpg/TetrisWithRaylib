@@ -1,7 +1,6 @@
 #include "TetrisDraw.h"
+#include "TetrisData.h"
 
-extern int stage[];
-extern Color colorsTypes[];
 
 void DrawTetromino(const int startOffsetX, const int startOffsetY, const int tetrominoCellX, const int tetrominoCellY, const int *tetromino, const Color tetrominoColor)
 {

@@ -11,7 +11,6 @@
 #define SCORE_TEXT_Y 80
 #define FONT_SIZE 20
 
-Sound SFXDeleteLines;
 int score;
 float tetrominoDescentTime;
 
@@ -51,7 +50,7 @@ int main(int argc, char** argv, char** environ)
     PlayMusicStream(music);
 
     // Sound effects
-    SFXDeleteLines = LoadSound("ClearLine.wav");         
+    Sound SFXDeleteLines = LoadSound("ClearLine.wav");         
 
     SetTargetFPS(60);
 
@@ -120,7 +119,7 @@ int main(int argc, char** argv, char** environ)
                     }
                 }
 
-                DeleteLines();
+                DeleteLines(SFXDeleteLines);
 
                 currentTetrominoCellX = tetrominoStartCellX;
                 currentTetrominoCellY = tetrominoStartCellY;

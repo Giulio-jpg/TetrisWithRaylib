@@ -1,6 +1,5 @@
 #include "TetrisCollision.h"
-
-extern int stage[];
+#include "TetrisData.h"
 
 int CheckCollision(const int tetrominoCellX, const int tetrominoCellY, const int *tetromino)
 {
