@@ -9,8 +9,8 @@ int main(int argc, char** argv, char** environ)
     const int windowWidth = 720;    
     const int windowHeight = 512;    
 
-    const int startOffsetX = windowWidth / 2 - STAGE_WIDTH * TILE_SIZE / 2;
-    const int startOffsetY = windowHeight / 2 - STAGE_HEIGHT * TILE_SIZE / 2;
+    const int arenaStartOffsetX = windowWidth / 2 - STAGE_WIDTH * TILE_SIZE / 2;
+    const int arenaStartOffsetY = windowHeight / 2 - STAGE_HEIGHT * TILE_SIZE / 2;
 
     const int tetrominoStartCellX = STAGE_WIDTH / 2;
     const int tetrominoStartCellY = 0;
@@ -125,8 +125,8 @@ int main(int argc, char** argv, char** environ)
         BeginDrawing();
         ClearBackground(RED);
         
-        DrawArena(startOffsetX, startOffsetY);
-        DrawTetromino(startOffsetX, startOffsetY, currentTetrominoCellX, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation], colorsTypes[tetrominoColor]);
+        DrawArena(arenaStartOffsetX, arenaStartOffsetY);
+        DrawTetromino(arenaStartOffsetX, arenaStartOffsetY, currentTetrominoCellX, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation], colorsTypes[tetrominoColor]);
 
         DrawText(TextFormat("Score: %04i", score), SCORE_TEXT_X, SCORE_TEXT_Y, FONT_SIZE, WHITE);
 
