@@ -5,7 +5,7 @@
 #define STAGE_WIDTH 12
 #define STAGE_HEIGHT 22
 #define TETROMINO_SIZE 4
-#define TILE_SIZE 22
+#define TILE_SIZE 22     // in pixel
 
 #define TETROMINO_TYPES 6
 #define COLORS 8
