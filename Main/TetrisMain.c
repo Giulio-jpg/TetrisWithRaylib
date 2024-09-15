@@ -15,12 +15,12 @@ int main(int argc, char** argv, char** environ)
     const int tetrominoStartCellX = STAGE_WIDTH / 2;
     const int tetrominoStartCellY = 0;
 
-    int currentTetrominoCellX = tetrominoStartCellX;
-    int currentTetrominoCellY = tetrominoStartCellY;
-
     time_t unixTime;
     time(&unixTime);
     SetRandomSeed(unixTime);
+
+    int currentTetrominoCellX = tetrominoStartCellX;
+    int currentTetrominoCellY = tetrominoStartCellY;
 
     int currentTetrominoType = GetRandomValue(0, TETROMINO_TYPES);
     int tetrominoRotation = 0;
@@ -80,6 +80,7 @@ int main(int argc, char** argv, char** environ)
         
         if (IsKeyPressed(KEY_LEFT))
         {
+            // no need to check for overflow, it is blocked by the wall
             if(!CheckCollision(currentTetrominoCellX - 1, currentTetrominoCellY, tetrominoTypes[currentTetrominoType][tetrominoRotation]))
             {
                 currentTetrominoCellX--;
@@ -113,6 +114,7 @@ int main(int argc, char** argv, char** environ)
                 
                 CheckDeleteLines(SFXDeleteLines, &score, &tetrominoDescentTime);
 
+                // spawn new tetromino
                 currentTetrominoCellX = tetrominoStartCellX;
                 currentTetrominoCellY = tetrominoStartCellY;
 
@@ -138,4 +140,3 @@ int main(int argc, char** argv, char** environ)
     CloseWindow();
     return 0;
 }
-
