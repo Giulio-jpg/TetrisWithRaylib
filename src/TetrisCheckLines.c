@@ -43,6 +43,7 @@ void CheckDeleteLines(Sound SFXDeleteLines, int* score, float* descentTime)
 
             if (stage[offset] == 0)
             {
+                // line has an empty position
                 checkLine = 0;
                 break;
             }
