@@ -88,7 +88,7 @@ const int *tetrominoTypes[7][4] =
 };
 ```
 
-So when I draw them, I only need to specify the array index to get the tetromino:
+So when I need to perform operations on the current tetromino(like checking collisions or drawing it), I will be able to access it via two variables, its type and its rotation:
 
 ``` c                                                                        
 tetrominoTypes[currentTetrominoType][tetrominoRotation]
@@ -114,8 +114,69 @@ if (IsKeyPressed(KEY_SPACE))
 }
 ```
 
-The most complicated part was implementing the collisions
+A bit of a tricky part for me was implementing the deletion of a line when it is complete.
 
+It is a recursive function, because if dropping the pieces fills another line, you have to delete that one too.
+
+``` c                                                                        
+void CheckDeleteLines(Sound SFXDeleteLines, int* score, float* descentTime)
+{
+    for (int y = 0; y < STAGE_HEIGHT - 1; y++)
+    {
+        int checkLine = 1;
+        for (int x = 1; x < STAGE_WIDTH - 1; x++)
+        {
+            const int offset = y * STAGE_WIDTH + x;
+
+            if (stage[offset] == 0)
+            {
+                // line has an empty position
+                checkLine = 0;
+                break;
+            }
+        }
+
+        if (checkLine)
+        {
+            const int offset = y * STAGE_WIDTH + 1;
+
+            memset(stage + offset, 0, (STAGE_WIDTH - 2) * sizeof(int));
+
+            ResetLines(y);
+            PlaySound(SFXDeleteLines);
+            UpdateScore(score, descentTime);
+        }
+    }
+}
+```
+
+My idea was to check all lines and if the line I'm checking has at least one 0 (an empty position), I can move on to the next line.
+
+But when I delete a line, I must also drop all the pieces above that line, so I thought of making a loop that starts from the line I deleted and goes to the top of the stage:
+
+``` c                                                                        
+void ResetLines(const int startLineY)
+{
+    for (int y = startLineY; y >= 0; y--)
+    {
+        for (int x = 1; x < STAGE_WIDTH - 1; x++)
+        {
+            const int offset = y * STAGE_WIDTH + x;
+            const int offsetBelow = (y + 1) * STAGE_WIDTH + x;
+
+            if (stage[offsetBelow] == 0 && stage[offset] > 0)
+            {
+                stage[offsetBelow] = stage[offset];
+                stage[offset] = 0;
+            }
+        }
+    }
+}
+```
+
+Calling this function each time I delete a line, I can delete several lines if I complete them together.
+
+https://github.com/user-attachments/assets/6beb1235-304b-420d-8213-107e8719c0a5
 
 
 ## How to use
